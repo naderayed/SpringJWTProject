@@ -38,6 +38,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username,password);
         return authenticationManager.authenticate(authenticationToken);
 
+
     }
 
     @Override
@@ -50,6 +51,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
                 .withIssuer(request.getRequestURL().toString())
                 .withClaim("roles",user.getAuthorities().stream().map(GrantedAuthority::getAuthority)
                         .collect(Collectors.toList()))
+               // .withClaim("eamil",user.get)
 
                 .sign(algorithm);
         String refrech_token = JWT.create()

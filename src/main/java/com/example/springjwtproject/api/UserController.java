@@ -20,7 +20,7 @@ public class UserController {
     private final AppUserService appUserService;
 
     @GetMapping("/users")
-//    @PreAuthorize("hasRole('ROLE_USER')")
+     @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<List<AppUser>> getUsers(){
        return ResponseEntity.ok().body(appUserService.getUsers());
     }
@@ -49,6 +49,7 @@ public class UserController {
 
 
     }
+
 
 
 }
